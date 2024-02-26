@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Track</title>
+    <script>
+        async function fetchRandomTrack() {
+            try {
+                const response = await fetch('/random');
+                const data = await response.text();
+                document.getElementById('trackContainer').innerHTML = data;
+            } catch (error) {
+                console.error('Error fetching random track:', error);
+                document.getElementById('trackContainer').innerText = 'Failed to load track.';
+            }
+        }
+
+        document.onload = fetchRandomTrack()
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: #61dafb;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4FA8C8;
+        }
+
+        #trackContainer {
+            width: 60%;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 200px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="fetchRandomTrack()">🎲 Another! 🎲</button>
+    <div id="trackContainer">
+        <!-- Soundcloud embed will be inserted here -->
+    </div>
+</body>
+</html>
