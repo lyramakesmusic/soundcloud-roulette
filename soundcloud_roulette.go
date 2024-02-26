@@ -61,9 +61,7 @@ func handleRandomRequest(w http.ResponseWriter, r *http.Request) {
 					fmt.Println("Blank track data. Track probably removed")
 					continue
 				}
-
-				fmt.Println(artistName, trackName, tag, description)
-
+				
 				// Save for later
 				appendToJsonl("found.jsonl", finalURL, artistName, trackName, tag, description)
 				
